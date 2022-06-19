@@ -139,7 +139,7 @@ h1{
 
 
 .last{
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	width: 100%;
 }
