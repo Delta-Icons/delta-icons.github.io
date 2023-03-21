@@ -1,9 +1,13 @@
 const iconSection = document.getElementById('icons');
 const iconsList = document.getElementById('icons-list');
+
 /**
  * Maximum number of icons per page
  */
-const MAX = 25;
+
+const MAX = 30;
+var regex = ''
+
 
 /**
  * Formats a icon file name into a space-separated name
@@ -12,6 +16,7 @@ const MAX = 25;
  * @example
  * formatIconName('ac_display.png'); // → Ac Display
  */
+
 const formatIconName = icon =>
   icon
     .slice(0, icon.indexOf('.'))
@@ -26,13 +31,29 @@ const formatIconName = icon =>
 const IconItem = icon => {
   const iconItem = document.createElement('div');
   iconItem.className = 'icon-item';
-
   iconItem.innerHTML = /* html */ `
     <img src="/assets/img/icons/${icon}" />
     <p>${formatIconName(icon)}</p>
   `;
   return iconItem;
 };
+
+
+const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
+
+
 
 /**
  * Renders a "page" of 100 icons. Returns the next page number.
@@ -45,7 +66,6 @@ const renderIcons = (icons, pagination = 0) => {
   icons.slice(pagination * MAX, (pagination + 1) * MAX).forEach(icon => {
     iconsList.append(IconItem(icon));
   });
-
   return pagination + 1;
 };
 
@@ -55,34 +75,51 @@ const renderIcons = (icons, pagination = 0) => {
  * and then uses a regex to pull out the file names from the anchor tags.
  * @returns {string[]} list of icon file names
  */
-const getIcons = async () => {
+const getIcons = async (value) => {
+
+  if (!value || value == '') var value = `.*\.png$`
+  else var value = `.*${value}.*\.png$`
+  var regex = new RegExp(value, "g")
+
   const iconsHtml = await fetch('./assets/img/icons/').then(res => res.text());
   const matches = iconsHtml.matchAll(/<li><a href="(.+?)"/g);
   const icons = [];
   for (const match of matches) {
-    icons.push(match[1]);
+    if (match[1].match(regex)) icons.push(match[1]);
   }
-  console.log(icons)
   return icons;
 };
+
 
 /**
  * Intializes code for rendering icon images:
  * fetches the icons, renders the first page, and adds an event listener to the `window` for infinite scrolling.
  */
-const initIcons = async () => {
-  const icons = await getIcons();
+
+const initIcons = async (value, scroll = false) => {
+  const icons = await getIcons(value);
+
+  iconsList.innerHTML = ''
   let pagination = renderIcons(icons);
 
-  // infinite scroll
-  window.addEventListener('scroll', () => {
+  window.onscroll = function() {
     if (
       window.scrollY + window.innerHeight >
       iconSection.offsetTop + iconSection.offsetHeight
     ) {
+
       pagination = renderIcons(icons, pagination);
     }
-  });
+  }
 };
 
-initIcons();
+const input = document.querySelector("input");
+
+input.value = ''
+
+initIcons()
+
+input.addEventListener("change", () => {
+  regex = document.getElementById('text').value.toLowerCase().trim();
+  initIcons(regex, true)
+});

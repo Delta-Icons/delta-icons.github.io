@@ -20,7 +20,7 @@ html{
 	line-height: 1.6;
 	font-family: 'HKGroteskRegular';
 	font-weight: normal; 
-	font-style: normal; 
+	font-style: normal;
 }
 
 
@@ -28,7 +28,7 @@ html{
 /* Layout */
 .content{
 	min-height: 100vh;
-	padding: 10vh 0;
+	padding: 10vh 0 0 0;
 	position: relative;
 }
 .wrapper{
@@ -54,6 +54,7 @@ section{
 	align-items: center;
 }
 
+
 .hori{
 	flex-wrap: wrap;
 	display: flex;
@@ -69,7 +70,7 @@ section{
 	flex-direction: column;
 	padding-top: 3%;
 }
-button{
+button, input[type=text]{
 	background: #444;
 	display: flex;
 	color: #FFF;
@@ -83,6 +84,9 @@ button{
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	cursor: pointer;
+}
+input[type=text]{
+	text-align: center;
 }
 button img,
 button input{
@@ -163,7 +167,7 @@ footer ul li{
 /* Icons */
 
 #icons {
-  margin: 60px 0;
+  margin: 60px 0 0 0;
   padding: 60px;
   background-color: #525252;
   overflow-x: hidden;
@@ -222,3 +226,4 @@ footer ul li{
   #icons-list {
     grid-template-columns: repeat(3, 1fr);
   }
+}
