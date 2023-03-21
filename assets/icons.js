@@ -26,13 +26,9 @@ const formatIconName = icon =>
 const IconItem = icon => {
   const iconItem = document.createElement('div');
   iconItem.className = 'icon-item';
-  var url
-
-  if (window.location.hostname == 'delta-icons.github.io') url = `https://github.com/Delta-Icons/android/raw/master/app/src/main/res/drawable-nodpi/${icon}`
-  else url = `./assets/img/icons/${icon}`
 
   iconItem.innerHTML = /* html */ `
-    <img src="${url}" />
+    <img src="/assets/img/icons/${icon}" />
     <p>${formatIconName(icon)}</p>
   `;
   return iconItem;
@@ -59,31 +55,16 @@ const renderIcons = (icons, pagination = 0) => {
  * and then uses a regex to pull out the file names from the anchor tags.
  * @returns {string[]} list of icon file names
  */
-
 const getIcons = async () => {
-  var matches = []
-  var iconsHtml
-  if (window.location.hostname == 'delta-icons.github.io') {
-    const response = await fetch('https://api.github.com/repos/Delta-Icons/android/git/trees/master?recursive=1');
-    const data = await response.json();
-    for (var url of data.tree) {
-      var basename = url.path.split('/').slice(-1)[0]
-      if (url.path.startsWith('app/src/main/res/drawable-nodpi/'))
-      matches.push(['', basename])
-    }
-  } else {
-    iconsHtml = await fetch('./assets/img/icons/').then(res => res.text());
-    matches = iconsHtml.matchAll(/<li><a href="(.+?)"/g);
-  }
+  const iconsHtml = await fetch('./assets/img/icons/').then(res => res.text());
+  const matches = iconsHtml.matchAll(/<li><a href="(.+?)"/g);
   const icons = [];
   for (const match of matches) {
-    if (!/^ic_|^clock_|^preview/.test(match))
-      icons.push(match[1]);
+    icons.push(match[1]);
   }
+  console.log(icons)
   return icons;
 };
-
-
 
 /**
  * Intializes code for rendering icon images:
@@ -99,7 +80,7 @@ const initIcons = async () => {
       window.scrollY + window.innerHeight >
       iconSection.offsetTop + iconSection.offsetHeight
     ) {
-      pagination = setTimeout(renderIcons(icons, pagination), 2000)
+      pagination = renderIcons(icons, pagination);
     }
   });
 };

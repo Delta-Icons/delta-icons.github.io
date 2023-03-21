@@ -29,6 +29,20 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v3
 
+    - name: Fill icons
+      run: |
+        git clone https://github.com/Delta-Icons/android
+        rm -f assets/img/icons/*
+        cp -f android/app/src/main/res/drawable-nodpi/*.png assets/img/icons/
+        rm -rf android
+        cd assets/img/icons
+        rm -f ic_* clock_* preview.png
+        cat << EOF > index.html
+        <html>
+        $(for icon in `ls *.png`; do echo "<li><a href=\"$icon\">$icon</a></li>"; done)
+        </html>
+        EOF
+
     - name: Upload contents to Artifacts
       uses: actions/upload-pages-artifact@v1
       with:
