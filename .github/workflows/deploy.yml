@@ -36,7 +36,7 @@ jobs:
         cp -f android/app/src/main/res/drawable-nodpi/*.png assets/img/icons/
         rm -rf android
         cd assets/img/icons
-        rm -f ic_* clock_* preview.jpg
+        rm -f ic_* clock_{bg,hour,minute}.png preview.jpg
         cat << EOF > index.html
         <html>
         $(for icon in `ls *.png`; do echo "<li><a href=\"$icon\">$icon</a></li>"; done)
