@@ -107,5 +107,6 @@ searchInput.addEventListener('change', () => {
   regexp = document.getElementById('text')
                    .value.toLowerCase()
                    .trim()
+                   .replace(/ +/, '_')
   initIcons(regexp, true)
 })
