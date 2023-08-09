@@ -4,6 +4,7 @@ const iconsCount = document.getElementById('icons_count')
 const searchInput = document.querySelector("input")
 
 
+
 // Maximum number of icons per page
 
 const MAX = 25
@@ -100,6 +101,28 @@ const initIcons = async (value) => {
   }
 }
 
+// Copy value to buffer
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+function copyToBuffer(caller, element) {
+  element = document.getElementById(element)
+  var previousText = element.innerText
+  var onclickAttr = caller.getAttribute('onclick')
+  var textToCopy = element.getAttribute('copy')
+  caller.setAttribute('onclick', 'false')
+  navigator.clipboard.writeText(textToCopy)
+  element.innerText = 'Copied to buffer!'
+  delay(3000).then(() => {
+    element.innerText = previousText
+    caller.setAttribute('onclick', onclickAttr)
+  })
+}
+
+// Init
+
 searchInput.value = ''
 initIcons()
 
@@ -110,3 +133,4 @@ searchInput.addEventListener('change', () => {
                    .replace(/ +/, '_')
   initIcons(regexp, true)
 })
+

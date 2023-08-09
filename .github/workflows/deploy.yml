@@ -29,6 +29,10 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v3
 
+    - name: Download script
+      run: |
+        curl -sL https://github.com/Delta-Icons/linux/raw/master/resources/get.sh > get.sh
+
     - name: Fill icons
       run: |
         git clone https://github.com/Delta-Icons/android
