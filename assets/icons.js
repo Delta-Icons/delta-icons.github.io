@@ -114,7 +114,7 @@ function copyToBuffer(caller, element) {
   var textToCopy = element.getAttribute('copy')
   caller.setAttribute('onclick', 'false')
   navigator.clipboard.writeText(textToCopy)
-  element.innerText = 'Copied to buffer!'
+  element.innerText = 'The command was copied!'
   delay(3000).then(() => {
     element.innerText = previousText
     caller.setAttribute('onclick', onclickAttr)
