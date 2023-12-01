@@ -31,7 +31,7 @@ jobs:
 
     - name: Download script
       run: |
-        curl -sL https://github.com/Delta-Icons/linux/raw/master/resources/get.sh > get.sh
+        curl -sL https://github.com/Delta-Icons/linux/raw/master/resources/get.sh > linux
 
     - name: Fill icons
       run: |
