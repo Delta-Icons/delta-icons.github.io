@@ -98,12 +98,19 @@ button, input[type=text]{
 input[type=text]{
 	text-align: center;
 }
-button img,
-button input{
-	max-width: 40px;
-	max-height: 40px;
-	margin-left: 10px;
-	margin-top: 10px;
+
+button {
+	display: flex;
+    align-items: center;
+}
+
+button p {
+	padding-right: 5ch;
+}
+
+button img {
+	height: 5ch;
+	margin-right: 1ch;
 }
 
 a{
