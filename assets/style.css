@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'HKGroteskRegular';
+        src: url('fonts/HKGroteskRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'NowAltBold';
+        src: url('fonts/NowAltBold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 *{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
