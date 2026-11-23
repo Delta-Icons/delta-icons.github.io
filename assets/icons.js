@@ -13,8 +13,15 @@ async function initIcons() {
   let matches = icons
   let previousQuery
   let rendered = 0
-  iconsList.addEventListener('load', event => {
-    if (event.target instanceof HTMLImageElement) event.target.classList.add('loaded')
+  iconsList.addEventListener('load', async event => {
+    const image = event.target
+    if (!(image instanceof HTMLImageElement)) return
+    try {
+      await image.decode()
+      image.parentElement?.classList.add('loaded')
+    } catch {
+      // Keep the placeholder if the PNG cannot be decoded.
+    }
   }, true)
 
   const observer = new IntersectionObserver(entries => {
