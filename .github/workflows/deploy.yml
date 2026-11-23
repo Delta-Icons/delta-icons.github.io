@@ -33,24 +33,38 @@ jobs:
       run: |
         curl -sL https://github.com/Delta-Icons/linux/raw/master/install.sh > linux
 
-    - name: Fill icons
+    - name: Checkout Android icons
+      uses: actions/checkout@v4
+      with:
+        repository: Delta-Icons/android
+        path: android
+        fetch-depth: 1
+        sparse-checkout: app/src/main/res/drawable-nodpi
+
+    - name: Prepare site and icon catalog
       run: |
-        git clone https://github.com/Delta-Icons/android
-        rm -f assets/img/icons/*
-        cp -f android/app/src/main/res/drawable-nodpi/*.png assets/img/icons/
-        rm -rf android
-        cd assets/img/icons
-        rm -f ic_* clock_{bg,hour,minute}.png preview.jpg
-        cat << EOF > index.html
-        <html>
-        $(for icon in `ls *.png`; do echo "<li><a href=\"$icon\">$icon</a></li>"; done)
-        </html>
-        EOF
+        mkdir _site
+        cp -r assets *.html linux _site/
+        rm -rf _site/assets/img/icons
+        mkdir -p _site/assets/img/icons
+        find android/app/src/main/res/drawable-nodpi -maxdepth 1 -type f -name '*.png' \
+          ! -name 'ic_*' ! -name clock_bg.png ! -name clock_hour.png ! -name clock_minute.png \
+          -exec cp -t _site/assets/img/icons -- {} +
+        cd _site/assets/img/icons
+        python3 - <<'PYTHON'
+        import json
+        from pathlib import Path
+
+        icons = sorted(path.name for path in Path(".").glob("*.png"))
+        if not icons:
+            raise SystemExit("No gallery PNGs found")
+        Path("icons.json").write_text(json.dumps(icons, separators=(",", ":")), encoding="utf-8")
+        PYTHON
 
     - name: Upload contents to Artifacts
       uses: actions/upload-pages-artifact@v3
       with:
-        path: '.'
+        path: _site
 
     - name: Deploy to GitHub Pages
       id: deployment

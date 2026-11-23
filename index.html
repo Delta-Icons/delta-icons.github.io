@@ -119,9 +119,10 @@
       <section id="icons">
         <div class="wrapper">
           <h2 class="text-center">An icon for every app</h2>
-            <h2><input id="text" type="text" placeholder="Search"/></h2>
-          <div id="icons-list"></div>
+          <input id="text" type="text" aria-label="Search icons" placeholder="Search">
         </div>
+        <div id="icons-list"></div>
+        <p id="icons-status" role="status" hidden></p>
       </section>
     </div>
     <script src="assets/icons.js" defer></script>
