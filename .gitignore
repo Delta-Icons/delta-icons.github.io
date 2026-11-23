@@ -1,4 +1,4 @@
 .DS_Store
-*.sh
-packages.sh
-assets/img/icons/
+/node_modules/
+/.cache/
+/dist/

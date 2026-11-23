@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 9.03 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 399 670" style="enable-background:new 0 0 399 670;" xml:space="preserve">
+<g id="phone_cut">
+	<g id="phone-body">
+		<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#4A4A4A;" d="M364,4.25H35c-19.3,0-35,15.7-35,35v166.04v193.46v67.5v36.65
+			v61.89v61.87c0,19.3,15.7,35,35,35h329c19.3,0,35-15.7,35-35v-61.87V502.9v-36.65v-67.5V205.29V39.25
+			C399,19.95,383.3,4.25,364,4.25z"/>
+		<path style="fill-rule:evenodd;clip-rule:evenodd;fill:#56595B;" d="M362,17.25h-60c-8.3,0-15,6.7-15,15v12c0,7.7-6.3,14-14,14
+			H125c-7.7,0-14-6.3-14-14v-12c0-8.3-6.7-15-15-15H37c-13.8,0-25,11.2-25,25v163.04v193.46v67.5v36.65v58.89v61.87
+			c0,13.8,11.2,25,25,25h325c13.8,0,25-11.2,25-25v-61.87V502.9v-36.65v-67.5V205.29V42.25C387,28.45,375.8,17.25,362,17.25z"/>
+		<path id="Line" style="fill:none;stroke:#979797;stroke-width:10;stroke-linecap:square;" d="M42.5,44.25H82"/>
+		<path id="Line-Copy" style="fill:none;stroke:#979797;stroke-width:10;stroke-linecap:square;" d="M317,44.25h42"/>
+		
+			<polyline id="Line_00000101804372177880650230000007385220126536566406_" style="fill:none;stroke:#56595B;stroke-width:10;stroke-linecap:round;" points="
+			134,37.25 205.2,37.25 264,37.25 		"/>
+	</g>
+</g>
+<g id="Layer_2">
+	<g>
+		<rect x="50.5" y="89.1" style="fill:#FFFFFF;" width="297.5" height="44.9"/>
+		<rect x="50.5" y="157.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="134" y="157.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="217.9" y="157.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="302" y="157.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="50.5" y="240.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="134" y="240.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="217.9" y="240.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="302" y="240.33" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="50.5" y="321.83" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="134" y="321.83" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="217.9" y="321.83" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="302" y="321.83" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="50.5" y="399.96" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="134" y="399.96" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="217.9" y="399.96" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="302" y="399.96" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="50.5" y="484.28" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="134" y="484.28" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="217.9" y="484.28" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="302" y="484.28" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="50.5" y="567.03" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="134" y="567.03" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="217.9" y="567.03" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+		<rect x="302" y="567.03" style="fill:#FFFFFF;" width="45.5" height="45.5"/>
+	</g>
+</g>
+</svg>

@@ -29,42 +29,18 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
-    - name: Download script
-      run: |
-        curl -sL https://github.com/Delta-Icons/linux/raw/master/install.sh > linux
-
-    - name: Checkout Android icons
-      uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        repository: Delta-Icons/android
-        path: android
-        fetch-depth: 1
-        sparse-checkout: app/src/main/res/drawable-nodpi
+        node-version: 22
+        cache: npm
 
-    - name: Prepare site and icon catalog
-      run: |
-        mkdir _site
-        cp -r assets *.html linux _site/
-        rm -rf _site/assets/img/icons
-        mkdir -p _site/assets/img/icons
-        find android/app/src/main/res/drawable-nodpi -maxdepth 1 -type f -name '*.png' \
-          ! -name 'ic_*' ! -name clock_bg.png ! -name clock_hour.png ! -name clock_minute.png \
-          -exec cp -t _site/assets/img/icons -- {} +
-        cd _site/assets/img/icons
-        python3 - <<'PYTHON'
-        import json
-        from pathlib import Path
-
-        icons = sorted(path.name for path in Path(".").glob("*.png"))
-        if not icons:
-            raise SystemExit("No gallery PNGs found")
-        Path("icons.json").write_text(json.dumps(icons, separators=(",", ":")), encoding="utf-8")
-        PYTHON
+    - run: npm ci
+    - run: npm run build
 
     - name: Upload contents to Artifacts
       uses: actions/upload-pages-artifact@v3
       with:
-        path: _site
+        path: dist
 
     - name: Deploy to GitHub Pages
       id: deployment
